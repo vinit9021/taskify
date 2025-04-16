@@ -8,6 +8,7 @@ Say hello to **Taskify**, a lightweight and no-fuss task-keeping web app built w
 
 ![Taskify Screenshot](./image1.png)
 ![Taskify Screenshot](./image2.png)
+
 ---
 
 ## 🛠️ Built With
