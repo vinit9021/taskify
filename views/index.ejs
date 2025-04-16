@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><b>Welcome to Taskify!!</b></h1>
+        
+        <div class="task-form">
+            <form action="/create" method="post">
+                <input type="text" id="task-title" placeholder="Title of the task" name="title"/>
+                <textarea id="task-desc" rows="4" placeholder="Description of the task" name="description"></textarea>
+                <button type="submit" id="create-task">Create Task</button>
+            </form>
+        </div>
+    
+        <div class="task-cards" id="tasks-container">
+            <% if (tasks.length > 0) { %>
+                <% tasks.forEach((task) => { %>
+                    <div class="task-card">
+                        <h3><b><%= task.title %></b></h3>
+                        <p>
+                            <%= task.description.length > 100 ? task.description.substring(0, 100) + "..." : task.description %>
+                        </p>
+
+                        <% if (task.description.length > 100) { %>
+                            <a href="/task/<%= task.filename %>" class="read-more-link">Read More</a>
+                        <% } %>
+
+                        <form action="/done/<%= task.filename %>" method="POST" style="display:inline;">
+                            <button type="submit" class="done-btn">Done</button>
+                        </form>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p class="no-tasks">No tasks yet.</p>
+            <% } %>
+        </div>
+    </div> 
+
+    <footer>
+        <div class="footer-text" style="text-align:center; margin-top: 50px; font-weight: bold;">
+            Built with passion <span class="heart" style="color:red;">&#10084;</span> by Vinit
+        </div>
+    </footer>
+</body>
+</html>
